@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Rewriter & Summarizer - InstaToolMate</title>
+    <meta name="description" content="Rewrite and summarize text content quickly and easily.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1><a href="../" style="text-decoration: none; color: inherit;">InstaToolMate</a></h1>
+                </div>
+                <nav class="nav">
+                    <a href="../" class="btn btn-secondary">← Back to Home</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="tool-main">
+        <div class="container">
+            <div class="tool-header">
+                <h1 class="tool-title">Text Rewriter & Summarizer</h1>
+                <p class="tool-description">Rewrite and summarize text content quickly and easily.</p>
+            </div>
+
+            <div class="tool-content">
+                <div class="input-section">
+                    <h2>Input Text</h2>
+                    <form id="text-form" class="text-form">
+                        <div class="form-group">
+                            <label for="input-text">Original Text</label>
+                            <textarea id="input-text" name="inputText" 
+                                      placeholder="Paste your text here to rewrite or summarize..." 
+                                      rows="12"></textarea>
+                            <div class="text-stats">
+                                <span id="char-count">0 characters</span>
+                                <span id="word-count">0 words</span>
+                                <span id="sentence-count">0 sentences</span>
+                            </div>
+                        </div>
+
+                        <div class="tool-options">
+                            <h3>Processing Options</h3>
+                            <div class="options-grid">
+                                <div class="option-group">
+                                    <h4>Rewriting Style</h4>
+                                    <div class="radio-group">
+                                        <label class="radio-label">
+                                            <input type="radio" name="rewriteStyle" value="simple" checked>
+                                            <span class="radio-custom"></span>
+                                            Simple Rewrite
+                                        </label>
+                                        <label class="radio-label">
+                                            <input type="radio" name="rewriteStyle" value="formal">
+                                            <span class="radio-custom"></span>
+                                            Formal Style
+                                        </label>
+                                        <label class="radio-label">
+                                            <input type="radio" name="rewriteStyle" value="casual">
+                                            <span class="radio-custom"></span>
+                                            Casual Style
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="option-group">
+                                    <h4>Summary Length</h4>
+                                    <div class="radio-group">
+                                        <label class="radio-label">
+                                            <input type="radio" name="summaryLength" value="short" checked>
+                                            <span class="radio-custom"></span>
+                                            Short (1-2 sentences)
+                                        </label>
+                                        <label class="radio-label">
+                                            <input type="radio" name="summaryLength" value="medium">
+                                            <span class="radio-custom"></span>
+                                            Medium (3-5 sentences)
+                                        </label>
+                                        <label class="radio-label">
+                                            <input type="radio" name="summaryLength" value="long">
+                                            <span class="radio-custom"></span>
+                                            Long (5+ sentences)
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" id="rewrite-text" class="btn btn-primary">Rewrite Text</button>
+                            <button type="button" id="summarize-text" class="btn btn-secondary">Summarize Text</button>
+                            <button type="button" id="clear-text" class="btn btn-secondary">Clear All</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="output-section">
+                    <h2>Processed Text</h2>
+                    <div class="output-tabs">
+                        <button class="tab-btn active" data-tab="rewritten">Rewritten</button>
+                        <button class="tab-btn" data-tab="summary">Summary</button>
+                        <button class="tab-btn" data-tab="comparison">Comparison</button>
+                    </div>
+
+                    <div id="rewritten-tab" class="tab-content active">
+                        <div id="rewritten-output" class="text-output">
+                            <div class="output-placeholder">
+                                <div class="placeholder-icon">✏️</div>
+                                <p>Rewritten text will appear here</p>
+                                <p class="placeholder-hint">Click "Rewrite Text" to process your content</p>
+                            </div>
+                        </div>
+                        <div class="output-stats" id="rewritten-stats" style="display: none;">
+                            <span id="rewritten-char-count">0 characters</span>
+                            <span id="rewritten-word-count">0 words</span>
+                        </div>
+                    </div>
+
+                    <div id="summary-tab" class="tab-content">
+                        <div id="summary-output" class="text-output">
+                            <div class="output-placeholder">
+                                <div class="placeholder-icon">📝</div>
+                                <p>Summary will appear here</p>
+                                <p class="placeholder-hint">Click "Summarize Text" to create a summary</p>
+                            </div>
+                        </div>
+                        <div class="output-stats" id="summary-stats" style="display: none;">
+                            <span id="summary-char-count">0 characters</span>
+                            <span id="summary-word-count">0 words</span>
+                        </div>
+                    </div>
+
+                    <div id="comparison-tab" class="tab-content">
+                        <div class="comparison-grid">
+                            <div class="comparison-item">
+                                <h4>Original</h4>
+                                <div id="original-preview" class="comparison-text">
+                                    <p class="no-content">No text to compare</p>
+                                </div>
+                            </div>
+                            <div class="comparison-item">
+                                <h4>Processed</h4>
+                                <div id="processed-preview" class="comparison-text">
+                                    <p class="no-content">No processed text</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="output-actions" class="output-actions" style="display: none;">
+                        <button id="copy-output" class="btn btn-primary">Copy Result</button>
+                        <button id="download-output" class="btn btn-secondary">Download as TXT</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="features-section">
+                <h2>Features</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🔄</div>
+                        <h3>Smart Rewriting</h3>
+                        <p>Automatically rewrites text while preserving meaning and context using synonym replacement and sentence restructuring.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📊</div>
+                        <h3>Intelligent Summarization</h3>
+                        <p>Creates concise summaries by identifying key sentences and main points from your original text.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🎨</div>
+                        <h3>Multiple Styles</h3>
+                        <p>Choose from different writing styles including formal, casual, and simple to match your needs.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📈</div>
+                        <h3>Text Analytics</h3>
+                        <p>Get detailed statistics including character count, word count, and sentence analysis for all versions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="back-to-top">↑</button>
+
+    <script src="../assets/js/main.js"></script>
+    <script src="./script.js"></script>
+</body>
+</html>

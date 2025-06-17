@@ -1,0 +1,20 @@
+{
+  "name": "instatoolmate",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build --outDir dist",
+    "preview": "vite preview",
+    "deploy": "gh-pages -d dist"
+  },
+  "devDependencies": {
+    "vite": "^5.4.2",
+    "@vitejs/plugin-react": "^4.3.1",
+    "gh-pages": "^6.3.0"
+  },
+  "dependencies": {
+    "qrious": "^4.0.2"
+  }
+}

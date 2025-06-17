@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Thumbnail Downloader - InstaToolMate</title>
+    <meta name="description" content="Download YouTube video thumbnails in various resolutions.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1><a href="../" style="text-decoration: none; color: inherit;">InstaToolMate</a></h1>
+                </div>
+                <nav class="nav">
+                    <a href="../" class="btn btn-secondary">← Back to Home</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="tool-main">
+        <div class="container">
+            <div class="tool-header">
+                <h1 class="tool-title">YouTube Thumbnail Downloader</h1>
+                <p class="tool-description">Download YouTube video thumbnails in various resolutions.</p>
+            </div>
+
+            <div class="tool-content">
+                <div class="input-section">
+                    <h2>Video URL</h2>
+                    <form id="thumbnail-form" class="thumbnail-form">
+                        <div class="form-group">
+                            <label for="youtube-url">YouTube Video URL</label>
+                            <input type="url" id="youtube-url" name="youtubeUrl" 
+                                   placeholder="https://www.youtube.com/watch?v=dQw4w9WgXcQ" required>
+                            <small class="form-help">
+                                Supported formats:
+                                <br>• https://www.youtube.com/watch?v=VIDEO_ID
+                                <br>• https://youtu.be/VIDEO_ID
+                                <br>• https://www.youtube.com/embed/VIDEO_ID
+                            </small>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" id="get-thumbnails" class="btn btn-primary">Get Thumbnails</button>
+                            <button type="button" id="clear-url" class="btn btn-secondary">Clear</button>
+                        </div>
+                    </form>
+
+                    <div id="video-info" class="video-info" style="display: none;">
+                        <h3>Video Information</h3>
+                        <div class="info-item">
+                            <span class="info-label">Video ID:</span>
+                            <span id="video-id">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">URL Format:</span>
+                            <span id="url-format">-</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="output-section">
+                    <h2>Available Thumbnails</h2>
+                    <div id="thumbnails-output" class="thumbnails-output">
+                        <div class="thumbnails-placeholder">
+                            <div class="placeholder-icon">🎬</div>
+                            <p>Enter a YouTube URL to see available thumbnails</p>
+                            <p class="placeholder-hint">Thumbnails will be displayed here in different resolutions</p>
+                        </div>
+                    </div>
+
+                    <div id="bulk-actions" class="bulk-actions" style="display: none;">
+                        <button id="download-all" class="btn btn-primary">Download All Thumbnails</button>
+                        <button id="copy-all-links" class="btn btn-secondary">Copy All Links</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-section">
+                <h2>How to Use</h2>
+                <div class="instructions">
+                    <div class="instruction-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Copy YouTube URL</h3>
+                            <p>Copy the URL of any YouTube video from your browser's address bar or the share button.</p>
+                        </div>
+                    </div>
+                    <div class="instruction-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Paste and Get Thumbnails</h3>
+                            <p>Paste the URL in the input field above and click "Get Thumbnails" to load all available resolutions.</p>
+                        </div>
+                    </div>
+                    <div class="instruction-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>Download Your Choice</h3>
+                            <p>Click on any thumbnail to download it, or use "Download All" to get all resolutions at once.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="thumbnail-sizes">
+                    <h3>Available Thumbnail Sizes</h3>
+                    <div class="sizes-grid">
+                        <div class="size-info">
+                            <h4>Default (120×90)</h4>
+                            <p>Basic thumbnail quality</p>
+                        </div>
+                        <div class="size-info">
+                            <h4>Medium Quality (320×180)</h4>
+                            <p>Good for web use</p>
+                        </div>
+                        <div class="size-info">
+                            <h4>High Quality (480×360)</h4>
+                            <p>High resolution thumbnail</p>
+                        </div>
+                        <div class="size-info">
+                            <h4>Standard Definition (640×480)</h4>
+                            <p>Standard quality</p>
+                        </div>
+                        <div class="size-info">
+                            <h4>Max Resolution (1280×720)</h4>
+                            <p>Highest quality available</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="back-to-top">↑</button>
+
+    <script src="../assets/js/main.js"></script>
+    <script src="./script.js"></script>
+</body>
+</html>

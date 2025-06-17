@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy Generator - InstaToolMate</title>
+    <meta name="description" content="Generate customized privacy policies for your website.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1><a href="../" style="text-decoration: none; color: inherit;">InstaToolMate</a></h1>
+                </div>
+                <nav class="nav">
+                    <a href="../" class="btn btn-secondary">← Back to Home</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="tool-main">
+        <div class="container">
+            <div class="tool-header">
+                <h1 class="tool-title">Privacy Policy Generator</h1>
+                <p class="tool-description">Generate customized privacy policies for your website.</p>
+            </div>
+
+            <div class="tool-content">
+                <div class="input-section">
+                    <h2>Website Information</h2>
+                    <form id="privacy-form" class="privacy-form">
+                        <div class="form-section">
+                            <h3>Basic Information</h3>
+                            <div class="form-group">
+                                <label for="website-name">Website/Company Name</label>
+                                <input type="text" id="website-name" name="websiteName" placeholder="Your Website Name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="website-url">Website URL</label>
+                                <input type="url" id="website-url" name="websiteUrl" placeholder="https://yourwebsite.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-email">Contact Email</label>
+                                <input type="email" id="contact-email" name="contactEmail" placeholder="contact@yourwebsite.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="company-address">Company Address (Optional)</label>
+                                <textarea id="company-address" name="companyAddress" placeholder="123 Main Street, City, State, ZIP Code" rows="3"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h3>Data Collection</h3>
+                            <div class="checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="dataTypes" value="personal" checked>
+                                    <span class="checkbox-custom"></span>
+                                    Personal Information (name, email, phone)
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="dataTypes" value="cookies">
+                                    <span class="checkbox-custom"></span>
+                                    Cookies and Tracking Technologies
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="dataTypes" value="analytics">
+                                    <span class="checkbox-custom"></span>
+                                    Analytics Data (Google Analytics, etc.)
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="dataTypes" value="usage">
+                                    <span class="checkbox-custom"></span>
+                                    Usage Data and Log Files
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="dataTypes" value="marketing">
+                                    <span class="checkbox-custom"></span>
+                                    Marketing and Communication Data
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="dataTypes" value="payment">
+                                    <span class="checkbox-custom"></span>
+                                    Payment Information
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h3>Third-Party Services</h3>
+                            <div class="checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="thirdParty" value="google-analytics">
+                                    <span class="checkbox-custom"></span>
+                                    Google Analytics
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="thirdParty" value="google-ads">
+                                    <span class="checkbox-custom"></span>
+                                    Google Ads
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="thirdParty" value="facebook-pixel">
+                                    <span class="checkbox-custom"></span>
+                                    Facebook Pixel
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="thirdParty" value="mailchimp">
+                                    <span class="checkbox-custom"></span>
+                                    MailChimp/Email Marketing
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="thirdParty" value="stripe">
+                                    <span class="checkbox-custom"></span>
+                                    Stripe/Payment Processing
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="thirdParty" value="social-media">
+                                    <span class="checkbox-custom"></span>
+                                    Social Media Integration
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h3>Legal Compliance</h3>
+                            <div class="checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="compliance" value="gdpr" checked>
+                                    <span class="checkbox-custom"></span>
+                                    GDPR (European Union)
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="compliance" value="ccpa">
+                                    <span class="checkbox-custom"></span>
+                                    CCPA (California)
+                                </label>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="compliance" value="coppa">
+                                    <span class="checkbox-custom"></span>
+                                    COPPA (Children's Privacy)
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" id="generate-policy" class="btn btn-primary">Generate Privacy Policy</button>
+                            <button type="button" id="clear-form" class="btn btn-secondary">Clear Form</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="output-section">
+                    <h2>Generated Privacy Policy</h2>
+                    <div id="policy-output" class="policy-output">
+                        <div class="policy-placeholder">
+                            <div class="placeholder-icon">🔒</div>
+                            <p>Your privacy policy will appear here</p>
+                            <p class="placeholder-hint">Fill in the form and click "Generate Privacy Policy"</p>
+                        </div>
+                    </div>
+
+                    <div id="policy-actions" class="output-actions" style="display: none;">
+                        <button id="copy-policy" class="btn btn-primary">Copy Policy</button>
+                        <button id="download-policy" class="btn btn-secondary">Download as HTML</button>
+                        <button id="download-txt" class="btn btn-secondary">Download as TXT</button>
+                    </div>
+
+                    <div id="policy-info" class="policy-info" style="display: none;">
+                        <h3>Policy Information</h3>
+                        <div class="info-item">
+                            <span class="info-label">Generated:</span>
+                            <span id="generation-date">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Word Count:</span>
+                            <span id="word-count">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Sections:</span>
+                            <span id="section-count">-</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="disclaimer-section">
+                <h2>Important Disclaimer</h2>
+                <div class="disclaimer-content">
+                    <div class="disclaimer-icon">⚠️</div>
+                    <div class="disclaimer-text">
+                        <p><strong>Legal Notice:</strong> This privacy policy generator provides a basic template for informational purposes only. It is not a substitute for professional legal advice.</p>
+                        <ul>
+                            <li>Always consult with a qualified attorney before implementing any privacy policy</li>
+                            <li>Privacy laws vary by jurisdiction and are subject to change</li>
+                            <li>Your specific business practices may require additional clauses</li>
+                            <li>Regular updates may be necessary to maintain compliance</li>
+                        </ul>
+                        <p>Use this tool as a starting point, but ensure proper legal review before publication.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="back-to-top">↑</button>
+
+    <script src="../assets/js/main.js"></script>
+    <script src="./script.js"></script>
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator - InstaToolMate</title>
+    <meta name="description" content="Generate QR codes for URLs, text, and more in seconds.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1><a href="../" style="text-decoration: none; color: inherit;">InstaToolMate</a></h1>
+                </div>
+                <nav class="nav">
+                    <a href="../" class="btn btn-secondary">← Back to Home</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="tool-main">
+        <div class="container">
+            <div class="tool-header">
+                <h1 class="tool-title">QR Code Generator</h1>
+                <p class="tool-description">Generate QR codes for URLs, text, and more in seconds.</p>
+            </div>
+
+            <div class="tool-content">
+                <div class="input-section">
+                    <h2>QR Code Settings</h2>
+                    <form id="qr-form" class="qr-form">
+                        <div class="form-group">
+                            <label for="qr-type">QR Code Type</label>
+                            <select id="qr-type" name="qrType">
+                                <option value="text">Text</option>
+                                <option value="url">URL/Website</option>
+                                <option value="email">Email</option>
+                                <option value="phone">Phone Number</option>
+                                <option value="sms">SMS</option>
+                                <option value="wifi">WiFi</option>
+                            </select>
+                        </div>
+
+                        <div id="text-input" class="input-group">
+                            <div class="form-group">
+                                <label for="text-content">Text Content</label>
+                                <textarea id="text-content" name="textContent" placeholder="Enter your text here..." rows="4"></textarea>
+                            </div>
+                        </div>
+
+                        <div id="url-input" class="input-group" style="display: none;">
+                            <div class="form-group">
+                                <label for="url-content">Website URL</label>
+                                <input type="url" id="url-content" name="urlContent" placeholder="https://example.com">
+                            </div>
+                        </div>
+
+                        <div id="email-input" class="input-group" style="display: none;">
+                            <div class="form-group">
+                                <label for="email-address">Email Address</label>
+                                <input type="email" id="email-address" name="emailAddress" placeholder="contact@example.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="email-subject">Subject (Optional)</label>
+                                <input type="text" id="email-subject" name="emailSubject" placeholder="Email subject">
+                            </div>
+                            <div class="form-group">
+                                <label for="email-body">Message (Optional)</label>
+                                <textarea id="email-body" name="emailBody" placeholder="Email message..." rows="3"></textarea>
+                            </div>
+                        </div>
+
+                        <div id="phone-input" class="input-group" style="display: none;">
+                            <div class="form-group">
+                                <label for="phone-number">Phone Number</label>
+                                <input type="tel" id="phone-number" name="phoneNumber" placeholder="+1 (555) 123-4567">
+                            </div>
+                        </div>
+
+                        <div id="sms-input" class="input-group" style="display: none;">
+                            <div class="form-group">
+                                <label for="sms-number">Phone Number</label>
+                                <input type="tel" id="sms-number" name="smsNumber" placeholder="+1 (555) 123-4567">
+                            </div>
+                            <div class="form-group">
+                                <label for="sms-message">Message</label>
+                                <textarea id="sms-message" name="smsMessage" placeholder="SMS message..." rows="3"></textarea>
+                            </div>
+                        </div>
+
+                        <div id="wifi-input" class="input-group" style="display: none;">
+                            <div class="form-group">
+                                <label for="wifi-ssid">Network Name (SSID)</label>
+                                <input type="text" id="wifi-ssid" name="wifiSsid" placeholder="MyWiFiNetwork">
+                            </div>
+                            <div class="form-group">
+                                <label for="wifi-password">Password</label>
+                                <input type="text" id="wifi-password" name="wifiPassword" placeholder="WiFi password">
+                            </div>
+                            <div class="form-group">
+                                <label for="wifi-security">Security Type</label>
+                                <select id="wifi-security" name="wifiSecurity">
+                                    <option value="WPA">WPA/WPA2</option>
+                                    <option value="WEP">WEP</option>
+                                    <option value="nopass">No Password</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="customization-section">
+                            <h3>Customization</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="qr-size">Size (pixels)</label>
+                                    <input type="number" id="qr-size" name="qrSize" value="256" min="100" max="1000" step="50">
+                                </div>
+                                <div class="form-group">
+                                    <label for="qr-color">Foreground Color</label>
+                                    <input type="color" id="qr-color" name="qrColor" value="#000000">
+                                </div>
+                                <div class="form-group">
+                                    <label for="qr-background">Background Color</label>
+                                    <input type="color" id="qr-background" name="qrBackground" value="#ffffff">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" id="generate-qr" class="btn btn-primary">Generate QR Code</button>
+                            <button type="button" id="clear-form" class="btn btn-secondary">Clear</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="output-section">
+                    <h2>Generated QR Code</h2>
+                    <div id="qr-output" class="qr-output">
+                        <div class="qr-placeholder">
+                            <div class="placeholder-icon">📱</div>
+                            <p>Your QR code will appear here</p>
+                            <p class="placeholder-hint">Fill in the form and click "Generate QR Code"</p>
+                        </div>
+                    </div>
+
+                    <div id="qr-actions" class="output-actions" style="display: none;">
+                        <button id="download-qr" class="btn btn-primary">Download QR Code</button>
+                        <button id="copy-link" class="btn btn-secondary">Copy as Data URL</button>
+                    </div>
+
+                    <div id="qr-info" class="qr-info" style="display: none;">
+                        <h3>QR Code Information</h3>
+                        <div class="info-item">
+                            <span class="info-label">Type:</span>
+                            <span id="info-type">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Size:</span>
+                            <span id="info-size">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Content:</span>
+                            <span id="info-content" class="info-content">-</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="back-to-top">↑</button>
+
+    <script src="../assets/js/main.js"></script>
+    <script src="./script.js"></script>
+</body>
+</html>

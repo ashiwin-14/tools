@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice Generator - InstaToolMate</title>
+    <meta name="description" content="Create professional invoices instantly with our free invoice generator tool.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1><a href="../" style="text-decoration: none; color: inherit;">InstaToolMate</a></h1>
+                </div>
+                <nav class="nav">
+                    <a href="../" class="btn btn-secondary">← Back to Home</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="tool-main">
+        <div class="container">
+            <div class="tool-header">
+                <h1 class="tool-title">Invoice Generator</h1>
+                <p class="tool-description">Create professional invoices instantly with real-time calculations.</p>
+            </div>
+
+            <div class="tool-content">
+                <div class="input-section">
+                    <h2>Invoice Details</h2>
+                    <form id="invoice-form" class="invoice-form">
+                        <div class="form-group">
+                            <label for="client-name">Client Name</label>
+                            <input type="text" id="client-name" name="clientName" placeholder="Enter client name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="invoice-number">Invoice Number</label>
+                            <input type="text" id="invoice-number" name="invoiceNumber" placeholder="INV-001" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="invoice-date">Invoice Date</label>
+                            <input type="date" id="invoice-date" name="invoiceDate" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="due-date">Due Date</label>
+                            <input type="date" id="due-date" name="dueDate" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="your-name">Your Name/Company</label>
+                            <input type="text" id="your-name" name="yourName" placeholder="Your business name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="your-address">Your Address</label>
+                            <textarea id="your-address" name="yourAddress" placeholder="Your business address" rows="3"></textarea>
+                        </div>
+
+                        <h3>Invoice Items</h3>
+                        <div id="invoice-items">
+                            <div class="invoice-item">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>Description</label>
+                                        <input type="text" name="description" placeholder="Service description" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Hours/Qty</label>
+                                        <input type="number" name="hours" placeholder="0" min="0" step="0.01" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Rate ($)</label>
+                                        <input type="number" name="rate" placeholder="0.00" min="0" step="0.01" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Total</label>
+                                        <input type="text" name="total" readonly class="readonly">
+                                    </div>
+                                    <button type="button" class="remove-item-btn" onclick="removeInvoiceItem(this)">×</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" id="add-item-btn" class="btn btn-secondary">Add Item</button>
+                        </div>
+
+                        <div class="invoice-summary">
+                            <div class="summary-row">
+                                <span>Subtotal:</span>
+                                <span id="subtotal">$0.00</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>Tax (%):</span>
+                                <input type="number" id="tax-rate" placeholder="0" min="0" max="100" step="0.01">
+                            </div>
+                            <div class="summary-row">
+                                <span>Tax Amount:</span>
+                                <span id="tax-amount">$0.00</span>
+                            </div>
+                            <div class="summary-row total-row">
+                                <span>Total:</span>
+                                <span id="total-amount">$0.00</span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="output-section">
+                    <h2>Invoice Preview</h2>
+                    <div id="invoice-preview" class="invoice-preview">
+                        <div class="invoice-header">
+                            <h1>INVOICE</h1>
+                            <div class="invoice-meta">
+                                <p><strong>Invoice #:</strong> <span id="preview-invoice-number">INV-001</span></p>
+                                <p><strong>Date:</strong> <span id="preview-invoice-date">-</span></p>
+                                <p><strong>Due Date:</strong> <span id="preview-due-date">-</span></p>
+                            </div>
+                        </div>
+
+                        <div class="invoice-parties">
+                            <div class="from-section">
+                                <h3>From:</h3>
+                                <div id="preview-your-name">Your Business</div>
+                                <div id="preview-your-address">Your Address</div>
+                            </div>
+                            <div class="to-section">
+                                <h3>Bill To:</h3>
+                                <div id="preview-client-name">Client Name</div>
+                            </div>
+                        </div>
+
+                        <div class="invoice-items-preview">
+                            <table class="items-table">
+                                <thead>
+                                    <tr>
+                                        <th>Description</th>
+                                        <th>Qty/Hours</th>
+                                        <th>Rate</th>
+                                        <th>Amount</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="preview-items">
+                                    <tr>
+                                        <td colspan="4" class="no-items">No items added</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="invoice-summary-preview">
+                            <div class="summary-line">
+                                <span>Subtotal:</span>
+                                <span id="preview-subtotal">$0.00</span>
+                            </div>
+                            <div class="summary-line">
+                                <span>Tax:</span>
+                                <span id="preview-tax">$0.00</span>
+                            </div>
+                            <div class="summary-line total-line">
+                                <span>Total:</span>
+                                <span id="preview-total">$0.00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="output-actions">
+                        <button id="print-invoice" class="btn btn-primary">Print Invoice</button>
+                        <button id="download-pdf" class="btn btn-secondary">Download PDF</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="back-to-top">↑</button>
+
+    <script src="../assets/js/main.js"></script>
+    <script src="./script.js"></script>
+</body>
+</html>
